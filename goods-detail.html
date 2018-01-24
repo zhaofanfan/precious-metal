@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="o2_wide">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>商品详情</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="stylesheets/base.css" rel="stylesheet">
+        <link href="stylesheets/goods-detail.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="shortcut">
+            <div class="w">
+                <ul class="fr">
+                    <li id="ttbar-login">
+                        <a href="javascript:;" class="link-login" id="LOGIN">亲，请登录</a>
+                        <a href="javascript:;" class="link-index hide" id="USERNAME">欢迎回来！<span></span></a>
+                        <a href="index.html" class="link-index">商城首页</a>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="link-order">
+                        <a href="javascript:;" target="_blank">订单中心</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="header">
+            <div class="w">
+                <div id="logo" class="logo"></div>
+                <div id="search">
+                    <div class="search-m">
+                        <div class="form">
+                            <input type="text" autocomplete="off" id="key" accesskey="s" class="text" placeholder="商品名称/关键字">
+                            <button id="J_searchBtn" class="button"><i class="iconfont"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w">
+            <div class="search-result-hd pl30 mb10">首页 / 搜索结果 “<span id="J_searchKeywords"></span>”</div>
+            <div class="product-intro clearfix">
+                <div class="preview-wrap">
+                    <div class="preview" id="preview">
+                        <div id="spec-n1" class="jqzoom main-img" data-big="1">
+                            <img id="TITLEPIC" width="460" style="max-height: 460px;" data-origin="images/goods_dtl.jpg" alt="" src="images/goods_dtl.jpg" jqimg="images/goods_dtl.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="itemInfo-wrap">
+                    <div id="NAME" class="sku-name"></div>
+                    <div class="summary summary-first">
+                        <div class="summary-price-wrap">
+                            <div class="summary-price J-summary-price">
+                                <span class="p-price"><span>￥</span><span id="PRICE" class="price">499.00</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary p-choose-wrap">
+                        <div id="choose-btns" class="choose-btns clearfix">
+                            <span class="tb-metatit">数量：</span>
+                            <div class="choose-amount">
+                                <div class="wrap-input">
+                                    <input class="text buy-num" onkeyup="setAmount.modify('#buy-num');" id="buy-num" value="1" data-max="199">
+                                    <a class="btn-reduce disabled" onclick="setAmount.reduce('#buy-num')" href="javascript:;" data-disabled="1">-</a>
+                                    <a class="btn-add" onclick="setAmount.add('#buy-num')" href="javascript:;" data-disabled="1">+</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:;" id="InitCartUrl" class="btn-primary btn-lg mt30">立即下单</a>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-wrapper">
+                <div class="box-hd"></div>
+                <div class="box-bd clearfix">
+                    <div class="ETab">
+                        <div class="tab-main border">商品参数</div>
+                        <div class="tab-con clearfix">
+                            <table class="reference">
+                                <tbody>
+                                    <tr>
+                                        <td class="label-td">SKU</td>
+                                        <td name="SKU" class="data-td"></td>
+                                        <td class="label-td">克重</td>
+                                        <td name="WEIGHT" class="data-td"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label-td">系列</td>
+                                        <td name="SERIES" class="data-td"></td>
+                                        <td class="label-td">全套枚数</td>
+                                        <td name="FSN" class="data-td"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label-td">材质</td>
+                                        <td name="MQ" class="data-td"></td>
+                                        <td class="label-td">购买方式</td>
+                                        <td name="BUYTYPE_DISPVALUE" class="data-td"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ETab">
+                        <div class="tab-main border">商品细节</div>
+                        <div id="J_detailWrap" class="tab-con tc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="copyright">深圳市金宇阳光文化发展有限公司</p>
+        </div>
+        <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="javascripts/buybtn.js"></script>
+        <script type="text/javascript" src="javascripts/mall.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#J_searchBtn").bind("click", function() {
+                    var keywords = $.trim($("#key").val());
+                    !keywords || window.open("search-result.html?keywords=" + keywords, "_blank")
+                });
+
+                $("#InitCartUrl").bind("click", function() {
+                    var goodsId = getUrlParam("GOODSID"),
+                        num = $("#buy-num").val();
+                    window.location.href = "order-confirm.html?GOODSID=" + goodsId + "&NUM=" + num;
+                });
+
+                var keywords = getUrlParam("keywords");
+                !keywords || $("#J_searchKeywords").text(keywords);
+
+                getGoods();
+                getGoodDetail();
+            });
+        </script>
+    </body>
+
+</html>

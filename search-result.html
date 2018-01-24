@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="o2_wide">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>搜索结果</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="stylesheets/base.css" rel="stylesheet">
+        <link href="stylesheets/index.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="shortcut">
+            <div class="w">
+                <ul class="fr">
+                    <li id="ttbar-login">
+                        <a href="javascript:;" class="link-login" id="LOGIN">亲，请登录</a>
+                        <a href="javascript:;" class="link-index hide" id="USERNAME">欢迎回来！<span></span></a>
+                        <a href="index.html" class="link-index">商城首页</a>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="link-order">
+                        <a href="javascript:;" target="_blank">订单中心</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="header">
+            <div class="w">
+                <div id="logo" class="logo"></div>
+                <div id="search">
+                    <div class="search-m">
+                        <div class="form">
+                            <input type="text" autocomplete="off" id="key" accesskey="s" class="text" placeholder="商品名称/关键字">
+                            <button id="J_searchBtn" class="button"><i class="iconfont"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index-wrapper mt30">
+            <div class="w">
+                <div id="J_summaryWrap" class="search-result-hd">
+                    <div class="fl">
+                        搜索结果 > <span id="J_searchKeywords"></span>
+                    </div>
+                    <div class="fr">
+                        共&nbsp;<span id="J_relCount" class="fw-b"></span>&nbsp;件相关商品
+                    </div>
+                </div>
+                <div class="box-bd clearfix">
+                    <div id="J_goodsList" class="goods-list-v2 gl-type-1 J-goods-list">
+                        <ul class="gl-warp clearfix" data-tpl="1">
+                            <!-- <li data-sku="" class="gl-item">
+                                <div class="gl-i-wrap">
+                                    <div class="p-img">
+                                        <a target="_blank" title="" href="">
+                                            <img width="222" height="220" class="err-product" data-img="1" src="images/goods.jpg">
+                                        </a>
+                                    </div>
+                                    <div class="p-price">
+                                        <strong class="J_" data-done="1"><em>￥</em><i>438.00</i></strong>
+                                        <p class="fr" data-id="">已售：148</p>
+                                    </div>
+                                    <div class="p-name p-name-type-2">
+                                        商品名称商品名称商品名称商品名称 商品名称商品名称商品名
+                                    </div>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="page clearfix">
+                        <div id="J_bottomPage" class="zxf_pagediv p-wrap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="copyright">深圳市金宇阳光文化发展有限公司</p>
+        </div>
+        <script id="goods_tmpl" type="text/html">
+            {{each data as goods index}}
+            <li data-sku="{{goods.SKU}}" class="gl-item {{if (index + 1) % 4 == 0}}mr0{{/if}}">
+                <div class="gl-i-wrap">
+                    <div class="p-img">
+                        <a target="_blank" title="{{goods.NAME}}" href="goods-detail.html?GOODSID={{goods.ID}}">
+                            <img width="222" height="220" class="err-product" data-img="1" src="{{goods.TITLEPIC}}">
+                        </a>
+                    </div>
+                    <div class="p-price">
+                        <strong class="J_" data-done="1"><em>￥</em><i>{{goods.PRICE}}</i></strong>
+                        <p class="fr" data-id="1" style="color: #9d9d9d;">已售：{{goods.SALEAMOUNT}}</p>
+                    </div>
+                    <div class="p-name p-name-type-2">
+                        {{goods.NAME}}
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </script>
+        <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="javascripts/template.js"></script>
+        <script type="text/javascript" src="javascripts/zxf_page.js"></script>
+        <script type="text/javascript" src="javascripts/mall.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#J_searchBtn").bind("click", function() {
+                    var keywords = $.trim($("#key").val());
+                    searchGoods(API_INTERFACE.SEARCHGOODS, { key: keywords });
+                });
+
+                $("#J_goodsList").delegate(".gl-item", "mouseover", function() {
+                    $(this).addClass("hover")
+                }).delegate(".gl-item", "mouseout", function() {
+                    $(this).removeClass("hover")
+                });
+
+                var keywords = getUrlParam("keywords");
+                !keywords || $("#key").val(keywords);
+                searchGoods(API_INTERFACE.SEARCHGOODS, { key: keywords });
+            });
+        </script>
+    </body>
+
+</html>

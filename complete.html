@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="o2_wide">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>录单完成</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link href="stylesheets/base.css" rel="stylesheet">
+        <link href="stylesheets/order-confirm.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="shortcut">
+            <div class="w">
+                <ul class="fr">
+                    <li id="ttbar-login">
+                        <a href="javascript:;" class="link-login" id="LOGIN">亲，请登录</a>
+                        <a href="javascript:;" class="link-index hide" id="USERNAME">欢迎回来！<span></span></a>
+                        <a href="index.html" class="link-index">商城首页</a>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="link-order">
+                        <a href="javascript:;" target="_blank">订单中心</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="header">
+            <div class="w">
+                <div id="logo" class="logo"></div>
+                <div id="search">
+                    <div class="search-m">
+                        <div class="form">
+                            <input type="text" autocomplete="off" id="key" accesskey="s" class="text" placeholder="商品名称/关键字">
+                            <button id="J_searchBtn" class="button"><i class="iconfont"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w">
+            <div class="mt20 clearfix">
+                <div class="progress-bar fr">
+                    <ul class="progress-ul">
+                        <li class="one active disabled">
+                            <div class="progress-bg"></div>
+                            <span class="progress-txt">选择商品</span>
+                        </li>
+                        <li class="two active disabled">
+                            <div class="progress-bg"></div>
+                            <span class="progress-txt">确认订单信息</span>
+                        </li>
+                        <li class="three active">
+                            <div class="progress-bg"></div>
+                            <span class="progress-txt">录单完成</span>
+                        </li>
+                        <li class="four">
+                            <div class="progress-bg"></div>
+                            <span class="progress-txt">确认收货</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="complete-wrap border">
+                <div class="complete-icon">订单录入成功！</div>
+                <div class="form-box mt30">
+                    <div class="input-item mb5">
+                        <div class="input-text">商品信息：</div>
+                        <div id="GOODSNAME" class="input-div fs12">
+                        </div>
+                    </div>
+                    <div class="input-item mb5">
+                        <div class="input-text">订单金额：</div>
+                        <div class="input-div fs12 fw-b" style="color: #ae1010;">
+                            ￥<span id="AMOUNT"></span>
+                        </div>
+                    </div>
+                    <div class="input-item mb5">
+                        <div class="input-text">收货人姓名：</div>
+                        <div id="RECEIVER" class="input-div fs12">
+                        </div>
+                    </div>
+                    <div class="input-item mb5">
+                        <div class="input-text">联系电话：</div>
+                        <div id="TEL" class="input-div fs12">
+                        </div>
+                    </div>
+                    <div class="input-item mb5">
+                        <div class="input-text">订单编号：</div>
+                        <div id="ORDERID" class="input-div fs12">
+                        </div>
+                    </div>
+                </div>
+                <div class="tc" style="margin-bottom: 40px;">
+                    <a href="index.html" class="btn-primary btn-lg mt30">返回商城</a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="javascripts/mall.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#J_searchBtn").bind("click", function() {
+                    var keywords = $.trim($("#key").val());
+                    !keywords || window.open("search-result.html?keywords=" + keywords, "_blank")
+                });
+
+                getOrderDetail();
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,238 @@
+@charset "utf-8";
+.progress-bar li {
+    float: left;
+    width: 150px;
+    text-align: center
+}
+
+.progress-bar .progress-bg {
+    height: 20px;
+    margin-bottom: 5px;
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+.progress-bar .one .progress-bg {
+    background-image: url(../images/status_01_disabled.jpg)
+}
+
+.progress-bar .two .progress-bg {
+    background-image: url(../images/status_02_disabled.jpg)
+}
+
+.progress-bar .three .progress-bg {
+    background-image: url(../images/status_03_disabled.jpg)
+}
+
+.progress-bar .four .progress-bg {
+    background-image: url(../images/status_04_disabled.jpg)
+}
+
+.progress-bar .one.active .progress-bg {
+    background-image: url(../images/status_01_active.jpg)
+}
+
+.progress-bar .two.active .progress-bg {
+    background-image: url(../images/status_02_active.jpg)
+}
+
+.progress-bar .three.active .progress-bg {
+    background-image: url(../images/status_03_active.jpg)
+}
+
+.progress-bar .four.active .progress-bg {
+    background-image: url(../images/status_04_active.jpg)
+}
+
+.progress-bar .one.active.disabled .progress-bg {
+    background-image: url(../images/status_01.jpg)
+}
+
+.progress-bar .two.active.disabled .progress-bg {
+    background-image: url(../images/status_02.jpg)
+}
+
+.progress-bar .three.active.disabled .progress-bg {
+    background-image: url(../images/status_03.jpg)
+}
+
+.progress-bar .four.active.disabled .progress-bg {
+    background-image: url(../images/status_04.jpg)
+}
+
+.progress-bar .progress-txt {
+    color: #cccccc
+}
+
+.progress-bar .active .progress-txt {
+    color: #c6a313
+}
+
+.progress-bar .active.disabled .progress-txt {
+    color: #f4ecd0
+}
+
+.border {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0
+}
+
+.border h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold
+}
+
+.border h2 .star {
+    margin-left: 5px;
+    color: #ae1010
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 0;
+}
+
+.catbox table {
+    text-align: center;
+    width: 100%;
+}
+
+.catbox table th {
+    background: #eeeeee;
+    height: 30px;
+}
+
+.catbox table tr:hover {
+    /* background: #eeeeee */
+}
+
+.goods {
+    width: 500px;
+}
+
+.goods span {
+    width: 180px;
+    margin-top: 20px;
+    text-align: left;
+    float: left;
+}
+
+.goods img {
+    width: 100px;
+    height: 80px;
+    margin-right: 10px;
+    float: left;
+}
+
+.price {
+    width: 160px;
+    color: #000;
+    font-weight: bold
+}
+
+.count {
+    width: 160px;
+}
+
+.subtotal {
+    width: 200px;
+    color: #ae1010;
+    font-weight: bold;
+}
+
+.tabbox .tab-hd a {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 20px;
+    padding: 0 20px;
+    border: 1px solid #e0e0e0;
+    position: relative
+}
+
+.tabbox .tab-hd a i, .form-box .input-item .input-div>input+i {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 18px;
+    height: 11px;
+    background: url(../images/hook.jpg) center center no-repeat
+}
+
+.form-box .input-item .input-div>input+i {
+    right: -2px;
+    bottom: -2px
+}
+
+.tabbox .tab-hd a.active, .invoicebox .form-box .input-item .input-div>input.focus {
+    border-width: 2px;
+    border-color: #ae1010
+}
+
+.tabbox .tab-hd a.active i, .invoicebox .form-box .input-item .input-div>input.focus+i {
+    display: block
+}
+
+.form-box {
+    margin-top: 45px
+}
+
+.form-box .input-item {
+    height: 32px;
+    margin-bottom: 20px;
+    line-height: 32px;
+    /* overflow: hidden; */
+}
+
+.form-box .input-item .input-text {
+    float: left;
+    width: 205px;
+    margin-right: 15px;
+    text-align: right;
+}
+
+.form-box .input-item .input-div {
+    float: left;
+    width: 358px;
+    height: 100%;
+    font-size: 0;
+    border-radius: 3px;
+    position: relative
+}
+
+.form-box .input-item .input-div>input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    text-indent: 1em;
+    color: #7d7d7d;
+}
+
+.form-box .invoice-num .input-div {
+    width: 512px;
+    font-size: 12px
+}
+
+.border .remark {
+    width: 680px;
+    height: 120px;
+    padding: 5px
+}
+
+.complete-wrap .input-text {
+    width: 400px !important
+}
+
+.complete-icon {
+    width: 120px;
+    height: 48px;
+    line-height: 48px;
+    margin: 30px auto;
+    padding-left: 64px;
+    background: url(../images/success_icon.jpg) left center no-repeat
+}
